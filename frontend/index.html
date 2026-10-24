@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Limiter Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Rate Limiter</h1>
+            <p>Explore how different rate-limiting algorithms behave.</p>
+        </header>
+
+        <section class="panel">
+            <label for="algorithm">Select Algorithm</label>
+            <select id="algorithm">
+                <option value="token_bucket">Token Bucket</option>
+                <option value="fixed_window">Fixed Window</option>
+                <option value="sliding_window">Sliding Window</option>
+                <option value="sliding_window_counter">
+                    Sliding Window Counter
+                </option>
+            </select>
+
+            <label for="clientId">Client ID</label>
+            <input id="clientId" type="text" value="client-1">
+
+            <label for="requestCount">Number of Requests</label>
+            <input id="requestCount" type="number"
+                   min="1" max="100" value="10">
+
+            <button id="sendBtn">Send Requests</button>
+            <button id="clearBtn" class="secondary">Clear Results</button>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>Allowed</span>
+                <h2 id="allowed">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Rejected</span>
+                <h2 id="rejected">0</h2>
+            </div>
+            <div class="stat-card">
+                <span>Total Sent</span>
+                <h2 id="total">0</h2>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Request Results</h2>
+            <p id="message">No requests sent yet.</p>
+            <div id="results" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
